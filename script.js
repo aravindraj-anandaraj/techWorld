@@ -1,4 +1,4 @@
-let api_url = 'https://api-mobilespecs.azharimm.site/v2/';
+let api_url = 'https://api-mobilespecs.azharimm.site/v2';
 let brand_id = document.getElementById('brand_id');
 let phones_grid = document.getElementById('phones_grid');
 
@@ -7,21 +7,21 @@ window.onload = function() {
 }
 
 async function displayBrandNameOptions() {
-    let brands = await fetch(`${api_url}brands`).then(res => res.json());
+    let brands = await fetch(`${api_url}/brands`).then(res => res.json());
     console.log(brands);
     let names = brands.data;
     console.log(names);
     names.forEach(element => {
         brand_id.innerHTML = brand_id.innerHTML + `<option value="${element.brand_slug}">${element.brand_name}</option>`;
     });
-    brand_details = await fetch(`${api_url}top-by-fans`).then(res => res.json()); 
+    brand_details = await fetch(`${api_url}/top-by-fans`).then(res => res.json()); 
     console.log(brand_details);
     getPhonesData(brand_details.data.phones);
 }
 
 brand_id.addEventListener('change', async () => {
     selected_brand = brand_id.selectedOptions[0].value;
-    brand_details = await fetch(`${api_url}brands/${selected_brand}`).then(res => res.json());
+    brand_details = await fetch(`${api_url}/brands/${selected_brand}`).then(res => res.json());
     getPhonesData(brand_details.data.phones);
 })
 
@@ -30,7 +30,7 @@ function getPhonesData(phones) {
     phones.forEach(async (phone) => {
 
         if(phone.image === undefined) {
-            phone.image = await fetch(phone.detail).then(res => res.json()).then(description => description.data.phone_images[0]);
+            phone.image = await fetch(`${api_url}/${phone.slug}`).then(res => res.json()).then(description => description.data.phone_images[0]);
             console.log(phone.image);
         }
         
