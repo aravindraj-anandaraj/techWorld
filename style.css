@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #d9edf1;
+}
+
+.card {
+    border-radius:30px;
+}
+
+.detail-btn {
+    background-color: #76b5c5;
+}
+
+img {
+    border-radius: 10px;
+}
+
+.phone-img {
+    border-radius: 30px;
+}
