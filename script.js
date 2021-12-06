@@ -42,7 +42,7 @@ function getPhonesData(phones) {
                 </div>
                 <img src="${phone.image}" class="card-img p-3" alt="${phone.phone_name}">
                 <div class="text-center m-3 p-2 bg-white">
-                    <button onClick="getPhoneDetails('${phone.detail}')" class="btn detail-btn text-white">Details</button>
+                    <button onClick="getPhoneDetails('${api_url}/${phone.slug}')" class="btn detail-btn text-white">Details</button>
                 </div>
             </div>
         </div>`;  
