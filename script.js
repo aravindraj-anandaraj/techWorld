@@ -30,7 +30,7 @@ function getPhonesData(phones) {
     phones.forEach(async (phone) => {
 
         if(phone.image === undefined) {
-            phone.image = await fetch(`${phone.detail}`).then(res => res.json()).then(description => description.data.phone_images[0]);
+            phone.image = await fetch(phone.detail).then(res => res.json()).then(description => description.data.phone_images[0]);
             console.log(phone.image);
         }
         
